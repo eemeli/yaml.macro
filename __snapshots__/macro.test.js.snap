@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`macros deep collection: deep collection 1`] = `
+"
+import yaml from './macro'
+const foo = yaml('./__fixtures__/deep-collection.yaml')
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const foo = {
+  \\"first\\": {
+    \\"second\\": [\\"seq\\", {
+      \\"deep\\": true
+    }],
+    \\"third\\": \\"value\\"
+  },
+  \\"other\\": true
+};
+"
+`;
+
+exports[`macros flat collection: flat collection 1`] = `
+"
+import yaml from './macro'
+const foo = yaml('./__fixtures__/flat-collection.yaml')
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const foo = {
+  \\"foo\\": \\"bar\\",
+  \\"one\\": 1
+};
+"
+`;
+
+exports[`macros number: number 1`] = `
+"
+import yaml from './macro'
+const foo = yaml('./__fixtures__/number.yaml')
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const foo = 42;
+"
+`;
+
+exports[`macros sequence: sequence 1`] = `
+"
+import yaml from './macro'
+const foo = yaml('./__fixtures__/sequence.yaml')
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const foo = [\\"one\\", [\\"2.1\\", \\"2.2\\"], \\"three\\", 4];
+"
+`;
+
+exports[`macros string: string 1`] = `
+"
+import yaml from './macro'
+const foo = yaml('./__fixtures__/string.yaml')
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const foo = \\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\\\\n\\";
+"
+`;

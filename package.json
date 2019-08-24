@@ -27,6 +27,7 @@
     "yaml": "^1.6.0"
   },
   "devDependencies": {
+    "babel-plugin-tester": "^7.0.1",
     "jest": "^24.9.0",
     "prettier": "^1.18.2"
   }
