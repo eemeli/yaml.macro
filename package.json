@@ -1,10 +1,10 @@
 {
   "name": "yaml.macro",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "license": "ISC",
   "author": "Eemeli Aro <eemeli@gmail.com>",
   "repository": "github:eemeli/yaml.macro",
-  "description": "A Babel macro for loading YAML",
+  "description": "A Babel macro for loading YAML files",
   "keywords": [
     "YAML",
     "babel-plugin-macros"
