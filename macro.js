@@ -11,19 +11,23 @@ function yamlMacro({ references, state }) {
     if (parentPath.type !== 'CallExpression')
       throw new MacroError('yaml.macro only supports usage as a function call')
 
-    let reqPath
+    let argPath, argOptions
     try {
-      reqPath = parentPath.get('arguments')[0].evaluate().value
+      const args = parentPath.get('arguments')
+      argPath = args[0].evaluate().value
+      if (args.length > 1) argOptions = args[1].evaluate().value
     } catch (error) {
       error.message = `yaml.macro argument evaluation failed: ${error.message}`
       throw error
     }
-    if (!reqPath) throw new MacroError('yaml.macro argument evaluation failed')
+    if (!argPath) throw new MacroError('yaml.macro argument evaluation failed')
 
     const dirname = path.dirname(state.file.opts.filename)
-    const fullPath = require.resolve(reqPath, { paths: [dirname] })
+    const fullPath = require.resolve(argPath, { paths: [dirname] })
     const fileContent = fs.readFileSync(fullPath, { encoding: 'utf-8' })
-    const res = YAML.parse(fileContent, { keepBlobsInJSON: false })
+
+    const options = Object.assign({}, argOptions, { keepBlobsInJSON: false })
+    const res = YAML.parse(fileContent, options)
     const exp = parseExpression(JSON.stringify(res))
     parentPath.replaceWith(exp)
   }

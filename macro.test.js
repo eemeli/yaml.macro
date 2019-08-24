@@ -54,20 +54,45 @@ pluginTester({
     'template literal filename': {
       code: `
         import yaml from './macro'
-        const dir = '__fixtures__'
+        const dir = "__fixtures__"
         const foo = yaml(\`\${'./' + dir}/number.yaml\`)
       `,
-      output: "const dir = '__fixtures__';\nconst foo = 42;"
+      output: 'const dir = "__fixtures__";\nconst foo = 42;'
     },
-
-    // errors
-    'no argument': {
+    'no arguments': {
       code: `
         import yaml from './macro'
         const foo = yaml()
       `,
       error: 'yaml.macro argument evaluation failed'
     },
+
+    // options
+    'YAML options': {
+      code: `
+        import yaml from './macro'
+        const foo = yaml('./__fixtures__/number.yaml', { schema: 'failsafe' })
+      `,
+      output: 'const foo = "42";'
+    },
+    'variable schema': {
+      code: `
+        import yaml from './macro'
+        const schema = "failsafe"
+        const foo = yaml('./__fixtures__/number.yaml', { schema })
+      `,
+      output: 'const schema = "failsafe";\nconst foo = "42";'
+    },
+    'generated options object': {
+      code: `
+        import yaml from './macro'
+        const opt = { schema: "failsafe" }
+        const foo = yaml('./__fixtures__/number.yaml', opt)
+      `,
+      output: 'const opt = {\n  schema: "failsafe"\n};\nconst foo = "42";',
+    },
+
+    // errors
     'bad usage': {
       code: `
         import yaml from './macro'
