@@ -20,6 +20,7 @@ function yamlMacro({ references, state }) {
       error.message = `yaml.macro argument evaluation failed: ${error.message}`
       throw error
     }
+    /* istanbul ignore if */
     if (!argPath) throw new MacroError('yaml.macro argument evaluation failed')
 
     const dirname = path.dirname(state.file.opts.filename)

@@ -15,7 +15,7 @@
   ],
   "main": "macro",
   "scripts": {
-    "test": "jest"
+    "test": "jest --coverage"
   },
   "prettier": {
     "semi": false,
