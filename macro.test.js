@@ -1,4 +1,4 @@
-const pluginTester = require('babel-plugin-tester')
+const pluginTester = require('babel-plugin-tester').default
 const plugin = require('babel-plugin-macros')
 
 pluginTester({
@@ -49,7 +49,7 @@ pluginTester({
         const dir = './__fixtures__'
         const foo = yaml(dir + '/number.yaml')
       `,
-      output: "const dir = './__fixtures__';\nconst foo = 42;"
+      output: "const dir = './__fixtures__'\nconst foo = 42"
     },
     'template literal filename': {
       code: `
@@ -57,7 +57,7 @@ pluginTester({
         const dir = "__fixtures__"
         const foo = yaml(\`\${'./' + dir}/number.yaml\`)
       `,
-      output: 'const dir = "__fixtures__";\nconst foo = 42;'
+      output: "const dir = '__fixtures__'\nconst foo = 42"
     },
     'no arguments': {
       code: `
@@ -73,7 +73,7 @@ pluginTester({
         import yaml from './macro'
         const foo = yaml('./__fixtures__/number.yaml', { schema: 'failsafe' })
       `,
-      output: 'const foo = "42";'
+      output: "const foo = '42'"
     },
     'variable schema': {
       code: `
@@ -81,7 +81,7 @@ pluginTester({
         const schema = "failsafe"
         const foo = yaml('./__fixtures__/number.yaml', { schema })
       `,
-      output: 'const schema = "failsafe";\nconst foo = "42";'
+      output: "const schema = 'failsafe'\nconst foo = '42'"
     },
     'generated options object': {
       code: `
@@ -89,7 +89,7 @@ pluginTester({
         const opt = { schema: "failsafe" }
         const foo = yaml('./__fixtures__/number.yaml', opt)
       `,
-      output: 'const opt = {\n  schema: "failsafe"\n};\nconst foo = "42";',
+      output: "const opt = {\n  schema: 'failsafe'\n}\nconst foo = '42'",
     },
 
     // errors
