@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`macros deep collection: deep collection 1`] = `
+exports[`unknown plugin deep collection: deep collection 1`] = `
 
 import yaml from './macro'
 const foo = yaml('./__fixtures__/deep-collection.yaml')
@@ -23,7 +23,7 @@ const foo = {
 
 `;
 
-exports[`macros flat collection: flat collection 1`] = `
+exports[`unknown plugin flat collection: flat collection 1`] = `
 
 import yaml from './macro'
 const foo = yaml('./__fixtures__/flat-collection.yaml')
@@ -38,7 +38,7 @@ const foo = {
 
 `;
 
-exports[`macros number: number 1`] = `
+exports[`unknown plugin number: number 1`] = `
 
 import yaml from './macro'
 const foo = yaml('./__fixtures__/number.yaml')
@@ -50,7 +50,7 @@ const foo = 42
 
 `;
 
-exports[`macros sequence: sequence 1`] = `
+exports[`unknown plugin sequence: sequence 1`] = `
 
 import yaml from './macro'
 const foo = yaml('./__fixtures__/sequence.yaml')
@@ -62,7 +62,7 @@ const foo = ['one', ['2.1', '2.2'], 'three', 4]
 
 `;
 
-exports[`macros string: string 1`] = `
+exports[`unknown plugin string: string 1`] = `
 
 import yaml from './macro'
 const foo = yaml('./__fixtures__/string.yaml')
