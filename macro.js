@@ -27,7 +27,11 @@ function yamlMacro({ references, state }) {
     const fullPath = require.resolve(argPath, { paths: [dirname] })
     const fileContent = fs.readFileSync(fullPath, { encoding: 'utf-8' })
 
-    const options = Object.assign({}, argOptions, { keepBlobsInJSON: false })
+    const options = Object.assign({}, argOptions, {
+      intAsBigInt: false,
+      json: true,
+      mapAsMap: false
+    })
     const res = YAML.parse(fileContent, options)
     const exp = parseExpression(JSON.stringify(res))
     parentPath.replaceWith(exp)
